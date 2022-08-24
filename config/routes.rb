@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
 
+  devise_scope :public do
+    root to: "public/homes#top"
+    get 'about' => 'public/homes#about', as: 'about'
+  end
+
+
 end
