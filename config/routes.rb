@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/unsubscribe'
+  end
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -19,6 +24,7 @@ Rails.application.routes.draw do
   devise_scope :public do
     root to: 'public/homes#top'
     get 'about' => 'public/homes#about', as: 'about'
+    get 'customers' => 'public/customers#show', as: 'customers'
   end
 
 
