@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     get 'about' => 'public/homes#about', as: 'about'
     get 'customers' => 'public/customers#show', as: 'customers'
     get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
+    get 'customers/edit' => 'public/customers#edit'
+    get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+    patch 'customers/withdraw'
   end
 
 
