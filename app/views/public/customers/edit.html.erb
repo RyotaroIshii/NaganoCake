@@ -40,10 +40,11 @@
         </div>
         <div class="row mb-3">
           <label class="col-sm-3"></label>
-          <%= f.submit "新規登録", :class => "btn btn-success px-5" %>
+          <%= f.submit "変更内容を保存", :class => "btn btn-success px-5" %>
+          <%= link_to '退会する', customers_unsubscribe_path, :class =>  "btn btn-sm btn-danger px-5" %>
         </div>
       <% end %>
     </div>
-    
+
   </div>
 </div>
