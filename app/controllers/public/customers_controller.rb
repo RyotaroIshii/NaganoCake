@@ -12,7 +12,6 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = current_customer
-
   end
 
   def unsubscribe
