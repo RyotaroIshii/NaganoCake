@@ -20,10 +20,9 @@ Rails.application.routes.draw do
     root to: 'public/homes#top'
     get 'about' => 'public/homes#about', as: 'about'
     get 'customers' => 'public/customers#show', as: 'customers'
-    get 'customers/show'
     get 'customers/edit' => 'public/customers#edit'
-    get 'customers/unsubscribe' => 'public/customers#unsubscribe'
-    patch 'customers/withdraw'
+    get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
   end
 
 
