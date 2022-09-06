@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  scope module: 'public' do
+    get 'customers/edit' => 'customers#edit'
+  end
 
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -16,13 +19,12 @@ Rails.application.routes.draw do
 
   end
 
-  devise_scope :public do
-    root to: 'public/homes#top'
-    get 'about' => 'public/homes#about', as: 'about'
-    get 'customers' => 'public/customers#show', as: 'customers'
-    get 'customers/edit' => 'public/customers#edit'
-    get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
+  scope module: 'public' do
+    root to: 'homes#top'
+    get 'about' => 'homes#about', as: 'about'
+    get 'customers' => 'customers#show', as: 'customers'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
 
 
