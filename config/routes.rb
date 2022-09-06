@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
   end
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     get 'customers' => 'customers#show', as: 'customers'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    resources :addresses
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
 
   end
