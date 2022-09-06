@@ -11,14 +11,27 @@
       <table class="table">
       <thead style="font-size:14px; background-color:#dcdcdc;">
         <tr>
-          <th class="col-2">会員ID</th>
-          <th class="col-3"><u>氏名</u></th>
-          <th class="col-4">メールアドレス</th>
-          <th class="col-3">ステータス</th>
+          <th>会員ID</th>
+          <th><u>氏名</u></th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
         </tr>
       </thead>
       <tbody>
-        
+        <tbody>
+          <% customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><u><%= customer.last_name %><%= customer.first_name %></u></td>
+              <td><%= customer.email %></td>
+              <% if customer.is_deleted == true %>
+                <td class="text-danger">退会</td>
+              <% else %>
+                <td class="text-success">有効</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
       </tbody>
     </table>
     </div>
