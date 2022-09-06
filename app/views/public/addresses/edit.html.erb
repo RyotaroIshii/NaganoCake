@@ -12,16 +12,19 @@
           <th>郵便番号（ハイフンなし）</th>
           <td><%= f.text_field :post_code %></td>
           <td></td>
+          <td></td>
         </tr>
         <tr>
           <th>住所</th>
           <td><%= f.text_field :address %></td>
           <td></td>
+          <td></td>
         </tr>
         <tr>
           <th>宛名</th>
           <td><%= f.text_field :name %></td>
-          <td><%= f.submit '変更内容を保存', class:"btn btn-success" %></td>
+          <td></td>
+          <td><%= f.submit '変更内容を保存', :class => "btn btn-success" %></td>
         </tr>
         <% end %>
       </table>

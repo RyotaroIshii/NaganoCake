@@ -1,30 +1,30 @@
 <div class ="container">
   <div class="row">
     <div class="offset-2 col-10">
-    <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">配送先登録/一覧</h5>
+      <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">配送先登録/一覧</h5>
     </div>
   </div>
   <div class ="row">
     <div class="col-lg-10 col-md-12">
-      <%= form_with model: @address, url: address_path, method: :post do |f| %>
       <table class ="table table-borderless">
+        <%= form_with model: @address, url: address_path, method: :post do |f| %>
         <tr>
           <th>郵便番号（ハイフンなし）</th>
-          <td><%= f.text_field:post_code, placeholder:"0000000" %></td>
+          <td><%= f.text_field :post_code, placeholder:"0000000" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= f.text_field:address,placeholder:"東京都渋谷区代々木神園0-0" %></td>
+          <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園0-0" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <th>宛名</th>
-          <td><%= f.text_field:name, placeholder:"令和道子" %></td>
+          <td><%= f.text_field :name, placeholder:"令和道子" %></td>
           <td></td>
-          <td><%= f.submit '新規登録',class:"btn btn-success" %></td>
+          <td><%= f.submit '新規登録', :class => "btn btn-success" %></td>
         </tr>
       </table>
       <% end %>
@@ -37,10 +37,10 @@
         </tr>
         <% @addresses.each do |address| %>
         <tr>
-          <td><%= address.postal_code %></td>
+          <td><%= address.post_code %></td>
           <td><%= address.address %></td>
           <td><%= address.name %></td>
-          <td><%= link_to '編集する', edit_address_path(address.id), class:"btn btn-success" %> <%= link_to '削除する', destroy_addresses_path(address.id), method: :delete, class:"btn btn-danger ml-2" %></td>
+          <td><%= link_to '編集する', edit_address_path(address.id), :class => "btn btn-success" %> <%= link_to '削除する', destroy_address_path(address.id), method: :delete, :class => "btn btn-danger" %></td>
         </tr>
         <% end %>
       </table>
@@ -55,10 +55,10 @@
   <div class ="row mt-4">
     <div class ="col-md-10">
       <table class ="table table-borderless">
-        <%= form_with model: @address, url:update_addresses_path(@address) do |f| %>
+        <%= form_with model: @address, url: update_addresses_path(@address) do |f| %>
         <tr>
           <th>郵便番号（ハイフンなし）</th>
-          <td><%= f.text_field :postal_code %></td>
+          <td><%= f.text_field :post_code %></td>
           <td></td>
         </tr>
         <tr>
@@ -69,7 +69,7 @@
         <tr>
           <th>宛名</th>
           <td><%= f.text_field :name %></td>
-          <td><%= f.submit '変更内容を保存', class:"btn btn-success" %></td>
+          <td><%= f.submit '変更内容を保存', :class => "btn btn-success" %></td>
         </tr>
         <% end %>
       </table>
