@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :admin do
-    get 'items/new'
-    get 'items/index'
-    get 'items/show'
-    get 'items/edit'
-  end
+
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
   end
@@ -27,16 +18,22 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :customers
+    resources :items
 
   end
 
   scope module: 'public' do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+
     get 'customers' => 'customers#show', as: 'customers'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    resources :addresses
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+
+    get 'items' => 'items#index', as: 'index_item'
+    get 'items/:id' => 'items#show', as: 'show_item'
+
+    resources :addresses
 
   end
 
