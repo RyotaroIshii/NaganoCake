@@ -24,7 +24,7 @@
               <td><%= customer.id %></td>
               <td><u><%= customer.last_name %><%= customer.first_name %></u></td>
               <td><%= customer.email %></td>
-              <% if customer.is_deleted == true %>
+              <% if customer.is_active == true %>
                 <td class="text-danger">退会</td>
               <% else %>
                 <td class="text-success">有効</td>
