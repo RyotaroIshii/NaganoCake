@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
   end
@@ -15,14 +14,21 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+
+
   namespace :admin do
     root to: 'homes#top'
 
     resources :customers
 
     resources :items
+    
+    resources :genres
 
   end
+
+
+
 
   scope module: 'public' do
     root to: 'homes#top'
