@@ -19,24 +19,20 @@
     <table class ="row mb-3 d-flex align-items-center">
     <tbody>
       <tr>
-        <td>商品画像</td>
-        <td></td>
-      </tr>
-      <tr>
         <td>商品名</td>
-        <td></td>
+        <td><%= @item.name %></td>
       </tr>
       <tr>
         <td class="align-top">商品説明</td>
-        <td></td>
+        <td><%= @item.introduction %></td>
       </tr>
       <tr>
         <td>ジャンル</td>
-        <!--<td>< f.collection_select :genre_id, @genres, :id, :name, include_blank: "選択してください" %></td>-->
+        <!--<td> @item.genre.name %></td>-->
       </tr>
       <tr>
-        <td>税抜価格</td>
-        <td>円</td>
+        <td>税込価格<br>(税抜価格)</td>
+        <td><%= @item.price %>(<%= @item.price %>)円</td>
       </tr>
       <tr>
         <td>販売ステータス</td>
