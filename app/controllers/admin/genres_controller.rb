@@ -3,7 +3,7 @@ class Admin::GenresController < ApplicationController
   def new
   end
 
-  def createa
+  def create
   end
 
   def index

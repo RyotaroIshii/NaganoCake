@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :customers
 
     resources :items
-    
+
     resources :genres
 
   end
