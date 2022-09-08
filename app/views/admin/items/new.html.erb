@@ -1,45 +1,53 @@
-    <div class="countainer">
+<div class="countainer">
   <div class="row">
-    <div class="offset-1"></div>
-    <div class="col-11">
+    <div class="offset-2"></div>
+    <div class="col-10">
       <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">商品新規登録</h5>
     </div>
   </div>
   <div class="row">
-    <div class="offset-2 col-9">
+    <div class="offset-4">
     <%= form_with model: @item, url: new_admin_item_path do |f| %>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 14px;">商品画像</label>
-        <%= f.email_field :email, autocomplete: "email",:placeholder => "sample@example.com", :class => "col-sm-7" %>
-      </div>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 14px;">商品名</label>
-        <%= f.password_field :password, autocomplete: "current-password", :class => "col-sm-7" %>
-      </div>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 14px;">商品説明</label>
-        <%= f.password_field :password, autocomplete: "current-password", :class => "col-sm-7" %>
-      </div>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 14px;">ジャンル</label>
-        <%= f.password_field :password, autocomplete: "current-password", :class => "col-sm-7" %>
-      </div>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 14px;">税抜価格</label>
-        <%= f.password_field :password, autocomplete: "current-password", :class => "col-sm-7" %>
-      </div>
-      <div class="row mb-3 d-flex align-items-center">
-        <label class="col-sm-2 mb-0" style="font-size: 13px;">販売ステータス</label>
-        <%= f.password_field :password, autocomplete: "current-password", :class => "col-sm-7" %>
-      </div>
-    </div>
-    <div class="offset-1"></div>
-  </div>
-  <div class="row d-flex py-4">
-    <div class="offset-3 col-sm-3">
-      <%= f.submit " ログイン ", :class => "btn btn-primary px-5 py-1" %>
-    </div>
-    <div class="offset-6"></div>
+    <table class ="row mb-3 d-flex align-items-center">
+    <tbody>
+      <tr>
+        <td><%= f.label :商品画像 %></td>
+        <td><%= f.label :image, :class => "btn btn-outline-dark" do %>
+              ファイルを選択
+              <%= f.file_field :image, :style => "display:none; " %>
+            <% end %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :商品名 %></td>
+        <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", :size => "40" %></td>
+      </tr>
+      <tr>
+        <td class="align-top"><%= f.label :商品説明 %></td>
+        <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", :size => "39*40" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :ジャンル %></td>
+        <!--<td>< f.collection_select :genre_id, @genres, :id, :name, include_blank: "選択してください" %></td>-->
+      </tr>
+      <tr>
+        <td><%= f.label :税抜価格 %></td>
+        <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000" %>円</td>
+      </tr>
+      <tr>
+        <td><%= f.label:販売ステータス %></td>
+        <td>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中", :class => "border-bottom" %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "販売停止中", :class => "border-bottom" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2", class ="text-center"><%= f.submit '新規登録', :class => "btn btn-success btn-lg" %></td>
+      </tr>
+    </tbody>
+    </table>
     <% end %>
+  </div>
   </div>
 </div>
