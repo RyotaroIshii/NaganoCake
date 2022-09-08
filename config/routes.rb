@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get 'items' => 'items#index', as: 'index_item'
     get 'items/:id' => 'items#show', as: 'show_item'
 
+
     resources :addresses
 
   end
