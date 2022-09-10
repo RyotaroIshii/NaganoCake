@@ -14,8 +14,9 @@
         <td><%= f.label :商品画像 %></td>
         <td><%= f.label :image, :class => "btn btn-outline-dark" do %>
               ファイルを選択
-              <%= f.file_field :image, :style => "display:none; " %>
-            <% end %></td>
+              <%= f.file_field :image, :style => "display:none;" %>
+            <% end %>
+        </td>
       </tr>
       <tr>
         <td><%= f.label :商品名 %></td>
@@ -27,7 +28,7 @@
       </tr>
       <tr>
         <td><%= f.label :ジャンル %></td>
-        <!--<td>< f.collection_select :genre_id, @genres, :id, :name, include_blank: "選択してください" %></td>-->
+        <td><% f.collection_select :genre_id, @genres, :id, :name, placeholder: "選択してください" %></td>
       </tr>
       <tr>
         <td><%= f.label :税抜価格 %></td>
