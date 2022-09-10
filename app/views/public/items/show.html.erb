@@ -1,2 +1,36 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class ="container">
+  <div class="row mt-5">
+    <div class="col-2 h-75">
+      <div class="border border-dark ">
+        <p class="my-1 text-center"> ジャンル検索</p>
+      </div>
+      <div class="border border-dark border-top-0 pt-2 pl-2">
+        <p>ケーキ</p>
+        <p>焼き菓子</p>
+        <p>プリン</p>
+        <p>キャンディ</p>
+      </div>
+    </div>
+  <div class ="row">
+    <div class="col-3">
+    <% if item.image.attached? %>
+      <%= image_tag item.get_image(300,200) %>
+    <% else %>
+      <%= image_tag 'no_image', size: "300x200" %>
+    <% end %>
+    </div>
+    <div>
+      <h4 class ="font-weight-bold"><%= @item.name %></h4>
+      <p class ="font-weight-bold"><%= @item.introduction %></p>
+      <h5 class ="font-weight-bold mt-4">¥ <%= @item.add_tax_price.to_s(:delimited) %><small>(税込)</small></h5>
+      <p>
+        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <%= f.select :amount, *[1..999] %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit 'カートに入れる', class:"btn btn-success mt-1 ml-5" %>
+        <% end %>
+      </p>
+
+    </div>
+  </div>
+</div>
