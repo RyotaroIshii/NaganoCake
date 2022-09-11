@@ -1,2 +1,58 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class ="container">
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-8 d-flex justify-content-between">
+      <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">ショッピングカート</h5>
+      <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, :class => "btn btn-danger" %>
+    </div>
+    <div class="offset-2"></div>
+  </div>
+  <div class ="row">
+    <div class="offset-2"></div>
+    <div class ="col-8">
+      <table class ="table table-bordered border-3">
+        <tr class ="bg-light">
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><p><%= image_tag cart_item.item.get_image(50,40) %>　<%= cart_item.item.name %></p></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= form_with model: cart_item, url: update_cart_item_path(cart_item.id) do |f| %>
+              <%= f.select :amount, *[1..999] %><%= f.submit '変更', :class => "btn btn-success btn-sm ml-2" %>
+              <% end %>
+          </td>
+          <td><%= cart_item.subtotal %></td>
+          <td><%= link_to '削除する', destroy_cart_item_path(cart_item.id) , method: :delete, :class => "btn btn-danger" %></td>
+          <% @total += cart_item.subtotal %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="offset-2"></div>
+  </div>
+  <div class="row">
+    <div class="offset-2"></div>
+    <div class="col-8 d-flex justify-content-between">
+      <%= link_to '買い物を続ける', root_path, :class => "btn btn-primary ml-4" %>
+      <table class ="table table-bordered border-3">
+        <tr>
+          <th class="table-light">合計金額</th>
+          <td><%= @total %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="offset-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class ="d-flex justify-content-center">
+        <!--<= link_to '情報入力に進む', _path, :class => "btn btn-success btn-lg mt-5" %>-->
+      </div>
+    </div>
+  </div>
+</div>
