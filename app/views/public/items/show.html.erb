@@ -23,7 +23,7 @@
     <div>
       <h4 class ="font-weight-bold"><%= @item.name %></h4>
       <p class ="font-weight-bold"><%= @item.introduction %></p>
-      <h5 class ="font-weight-bold mt-4">¥ <%= @item.add_tax_price.to_s(:delimited) %><small>(税込)</small></h5>
+      <h5 class ="font-weight-bold mt-4">¥ <%= @item.with_tax_price %><small>(税込)</small></h5>
       <p>
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.select :amount, *[1..999] %>
