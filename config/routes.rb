@@ -23,7 +23,11 @@ Rails.application.routes.draw do
 
     resources :items
 
-    resources :genres
+    get "/admin/genres" => "admin/genres#index"
+    post "/admin/genres" => "admin/genres#create", as: "genre_create"
+    get "/admin/genres/:id/edit" => "admin/genres#edit", as: "genre_edit"
+    patch "/admin/genres/:id" => "admin/genres#update", as: "genre_update"
+
 
   end
 
