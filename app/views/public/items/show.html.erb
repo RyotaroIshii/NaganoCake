@@ -11,7 +11,7 @@
         <p>キャンディ</p>
       </div>
     </div>
-  </div
+  </div>
   <div class ="row">
     <div class="col-3">
     <% if item.image.attached? %>
@@ -28,7 +28,7 @@
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.select :amount, *[1..999] %>
         <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit 'カートに入れる', class:"btn btn-success mt-1 ml-5" %>
+        <%= f.submit 'カートに入れる', :class =>"btn btn-success mt-1 ml-5" %>
         <% end %>
       </p>
     </div>
