@@ -52,6 +52,9 @@ Rails.application.routes.draw do
     get 'customers' => 'customers#show', as: 'customers'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    patch "customers" => "customers#update", as: "update"
+
+
 
     get 'items' => 'items#index', as: 'index_item'
     get 'items/:id' => 'items#show', as: 'show_item'
