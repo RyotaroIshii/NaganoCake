@@ -19,9 +19,17 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
 
-    resources :customers, only: [:index, :show, :edit, :update]
+    get "customers" => "customers#index", as: "index_customers"
+    get "customers/:id" => "customers#show", as: "show_customer"
+    get "customers/:id/edit" => "customers#edit", as: "edit_customer"
+    patch "customers/:id" => "customers#update", as: "update_customer"
 
-    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    get "items" => "items#index"
+    get "items/new" => "items#new"
+    post "items" => "items#create", as: "create_item"
+    get "items/:id" => "items#show", as: "show_item"
+    get "items/:id/edit" => "items#edit", as: "edit_item"
+    patch "items/:id" => "items#update", as: "update_item"
 
     get "genres" => "genres#index", as: "genres"
     post "genres" => "genres#create", as: "genre_create"
@@ -30,6 +38,9 @@ Rails.application.routes.draw do
 
 
   end
+
+
+
 
 
 
