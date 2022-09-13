@@ -69,7 +69,7 @@ Rails.application.routes.draw do
     get "addresses/:id/edit" => "addresses#edit", as: "edit_address"
     post "addresses" => "addresses#create", as: "create_address"
     patch "addresses/:id" => "addresses#update", as: "update_address"
-    delete "/ddresses/:id" => "addresses#destroy", as: "destroy_address"
+    delete "addresses/:id" => "addresses#destroy", as: "destroy_address"
 
 
   end
