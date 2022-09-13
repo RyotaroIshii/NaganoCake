@@ -65,7 +65,12 @@ Rails.application.routes.draw do
     delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
     delete "cart_items/:id" => "cart_items#destroy", as: "destroy_cart_item"
 
-    resources :addresses
+    get "addresses" => "addresses#index", as: "address"
+    get "addresses/:id/edit" => "addresses#edit", as: "edit_address"
+    post "addresses" => "addresses#create", as: "create_address"
+    patch "addresses/:id" => "addresses#update", as: "update_address"
+    delete "/ddresses/:id" => "addresses#destroy", as: "destroy_address"
+
 
   end
 
