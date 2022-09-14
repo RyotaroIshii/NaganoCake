@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
- 
-    
-  
+
+
+
   scope module: 'public' do
-    get 'customers/edit' => 'customers#edit'
+    get "customers/edit" => "customers#edit"
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    root to: 'homes#top'
+    root to: "homes#top"
 
     get "customers" => "customers#index", as: "index_customers"
     get "customers/:id" => "customers#show", as: "show_customer"
@@ -46,20 +46,20 @@ Rails.application.routes.draw do
 
 
   scope module: 'public' do
-    root to: 'homes#top'
-    get 'about' => 'homes#about', as: 'about'
+    root to: "homes#top"
+    get "about" => "homes#about", as: "about"
 
-    get 'customers' => 'customers#show', as: 'customers'
-    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get "customers" => "customers#show", as: "customers"
+    get "customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
+    patch "customers/withdraw" => "customers#withdraw", as: "withdraw"
     patch "customers" => "customers#update", as: "update"
 
 
 
-    get 'items' => 'items#index', as: 'index_item'
-    get 'items/:id' => 'items#show', as: 'show_item'
+    get "items" => "items#index", as: "index_item"
+    get "items/:id" => "items#show", as: "show_item"
 
-    get 'cart_items' => 'cart_items#index', as: 'cart'
+    get "cart_items" => "cart_items#index", as: "cart"
     post "cart_items" => "cart_items#create", as: "create_cart_item"
     patch "cart_items/:id" => "cart_items#update", as: "update_cart_item"
     delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
@@ -70,13 +70,13 @@ Rails.application.routes.draw do
     post "addresses" => "addresses#create", as: "create_address"
     patch "addresses/:id" => "addresses#update", as: "update_address"
     delete "addresses/:id" => "addresses#destroy", as: "destroy_address"
-    
-    get 'orders/new' => "orders#new", as: "new_order"
-    get 'orders/confirm' => "orders#confirm", as: "confirm_order"
-    get 'orders/thanks' => "orders#thanks", as: "thanks_order"
+
+    get "orders/new" => "orders#new", as: "new_order"
+    get "orders/confirm" => "orders#confirm", as: "confirm_order"
+    get "orders/thanks" => "orders#thanks", as: "thanks_order"
     post "orders" => "orders#create", as: "create_order"
-    get 'orders' => "orders#index", as: "index_orders"
-    get 'orders/:id' => "orders#show", as: "show_order"
+    get "orders" => "orders#index", as: "index_orders"
+    get "orders/:id" => "orders#show", as: "show_order"
 
 
   end
