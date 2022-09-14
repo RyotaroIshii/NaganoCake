@@ -2,6 +2,9 @@ class Public::OrdersController < ApplicationController
   def new
   end
 
+  def create
+  end
+
   def confirm
   end
 
@@ -13,4 +16,5 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
 end
