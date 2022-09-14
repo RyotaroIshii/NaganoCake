@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+ 
+    
+  
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
   end
@@ -42,9 +45,6 @@ Rails.application.routes.draw do
 
 
 
-
-
-
   scope module: 'public' do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
@@ -70,6 +70,13 @@ Rails.application.routes.draw do
     post "addresses" => "addresses#create", as: "create_address"
     patch "addresses/:id" => "addresses#update", as: "update_address"
     delete "addresses/:id" => "addresses#destroy", as: "destroy_address"
+    
+    get 'orders/new' => "orders#new", as: "new_order"
+    get 'orders/confirm' => "orders#confirm", as: "confirm_order"
+    get 'orders/thanks' => "orders#thanks", as: "thanks_order"
+    post "orders" => "orders#create", as: "create_order"
+    get 'orders' => "orders#index", as: "index_orders"
+    get 'orders/:id' => "orders#show", as: "show_order"
 
 
   end
