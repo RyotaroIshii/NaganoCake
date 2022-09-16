@@ -1,4 +1,4 @@
-<div class ="container">
+<div class="container">
   <div class="row">
     <div class="offset-2"></div>
     <div class="col-10">
@@ -6,12 +6,12 @@
     </div>
   </div>
   </div>
-  <div class ="row">
-    <div class ="col-12">
+  <div class="row">
+    <div class="col-12">
     <%= form_with model: @order, url: confirm_order_path do |f| %>
-      <div class ="mt-3">
-        <h5 class ="font-weight-bold">支払方法</h5>
-        <div class ="ml-5">
+      <div class="mt-3">
+        <h5 class="font-weight-bold">支払方法</h5>
+        <div class="ml-5">
           <ul class="list-unstyled">
             <li>
               <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -24,10 +24,10 @@
           </ul>
         </div>
       </div>
-      <div class ="mt-3">
-        <h5 class ="font-weight-bold">お届け先</h5>
-        <div class ="ml-5">
-          <ul class ="list-unstyled">
+      <div class="mt-3">
+        <h5 class="font-weight-bold">お届け先</h5>
+        <div class="ml-5">
+          <ul class="list-unstyled">
             <li>
               <%= f.radio_button :select_address, "0" %>
               <%= f.label :address,"ご自身の住所" %><br>
@@ -63,7 +63,7 @@
             </li>
           </ul>
         </div>
-        <div class ="m-2 d-flex justify-content-center">
+        <div class="m-2 d-flex justify-content-center">
           <%= f.submit "確認画面へ進む", :class => "btn btn-primary btn-lg" %>
         </div>
       </div>
