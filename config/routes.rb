@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     delete "addresses/:id" => "addresses#destroy", as: "destroy_address"
 
     get "orders/new" => "orders#new", as: "new_order"
+    get "orders/confirm" => "orders#confirm", as: "confirm"
     post "orders/confirm" => "orders#confirm", as: "confirm_order"
     get "orders/thanks" => "orders#thanks", as: "thanks_order"
     post "orders" => "orders#create", as: "create_order"
