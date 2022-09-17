@@ -5,7 +5,6 @@
       <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">注文情報入力</h5>
     </div>
   </div>
-  </div>
   <div class="row">
     <div class="col-12">
     <%= form_with model: @order, url: confirm_order_path, method: :post do |f| %>
@@ -15,11 +14,11 @@
           <ul class="list-unstyled">
             <li>
               <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-              <%= f.label :payment_method, "クレジットカード" %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
             </li>
             <li>
               <%= f.radio_button :payment_method, Order.payment_methods.key(1)  %>
-              <%= f.label :payment_method, "銀行振込" %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
             </li>
           </ul>
         </div>
