@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         <tbody>
-          <% customers.each do |customer| %>
+          <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
               <td><%= link_to admin_show_customer_path(customer) do %>
