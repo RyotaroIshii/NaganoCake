@@ -46,7 +46,7 @@
       </table>
     </div>
   </div>
-  <%= form_with model: @order, url: create_order_path do |f| %>
+  <%= form_with model: @order, url: create_order_path, method: :post do |f| %>
   <div class="row ml-5">
     <div class="col-md-4">
       <h5 class="font-weight-bold">支払方法</h5><p><%= @order.payment_method_i18n %></p>
