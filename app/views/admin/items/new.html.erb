@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td><%= f.label :ジャンル %></td>
-        <td><% f.collection_select :genre_id, @genres, :id, :name, placeholder: "選択してください" %></td>
+        <td><%= f.collection_select :genre_id, @genres, :id, :name, placeholder: "選択してください" %></td>
       </tr>
       <tr>
         <td><%= f.label :税抜価格 %></td>

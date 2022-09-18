@@ -14,7 +14,7 @@
   </div>
   <div class ="row">
     <div class="col-3">
-    <% if item.image.attached? %>
+    <% if @item.image.attached? %>
       <%= image_tag item.get_image(300,200) %>
     <% else %>
       <%= image_tag 'no_image', size: "300x200" %>

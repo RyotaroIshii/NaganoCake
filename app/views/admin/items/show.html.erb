@@ -8,14 +8,14 @@
   <div class="row">
     <div class="offset-1"></div>
     <div class="col-3">
-    <% if item.image.attached? %>
-      <%= image_tag item.get_image(300,200) %>
+    <% if @item.image.attached? %>
+      <%= image_tag @item.get_image(300,200) %>
     <% else %>
       <%= image_tag 'no_image', size: "300x200" %>
     <% end %>
     </div>
+    <div class="offset-1"></div>
     <div class="col-4">
-
     <table class ="row mb-3 d-flex align-items-center">
     <tbody>
       <tr>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <% if item.is_active == true %>
+        <% if @item.is_active == true %>
           <td class="text-success">販売中</td>
         <% else %>
           <td class="text-secondary">販売停止中</td>
