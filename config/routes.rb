@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     get "customers/:id/edit" => "customers#edit", as: "edit_customer"
     patch "customers/:id" => "customers#update", as: "update_customer"
 
-    get "items" => "items#index"
-    get "items/new" => "items#new"
+    get "items" => "items#index", as: "items"
+    get "items/new" => "items#new", as: "new_item"
     post "items" => "items#create", as: "create_item"
     get "items/:id" => "items#show", as: "show_item"
     get "items/:id/edit" => "items#edit", as: "edit_item"
