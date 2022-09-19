@@ -11,21 +11,19 @@
         <p>キャンディ</p>
       </div>
     </div>
-  </div>
-  <div class ="row">
-    <div class="col-3">
+    <div class="col-4 mx-3">
     <% if @item.image.attached? %>
-      <%= image_tag item.get_image(300,200) %>
+      <%= image_tag @item.get_image(300,200) %>
     <% else %>
       <%= image_tag 'no_image', size: "300x200" %>
     <% end %>
     </div>
-    <div>
+    <div class="col-3 ml-3">
       <h4 class ="font-weight-bold"><%= @item.name %></h4>
       <p class ="font-weight-bold"><%= @item.introduction %></p>
       <h5 class ="font-weight-bold mt-4">¥ <%= @item.with_tax_price %><small>(税込)</small></h5>
       <p>
-        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <%= form_with model: @cart_item, url: create_cart_item_path, method: :post do |f| %>
         <%= f.select :amount, *[1..999] %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit 'カートに入れる', :class =>"btn btn-success mt-1 ml-5" %>
