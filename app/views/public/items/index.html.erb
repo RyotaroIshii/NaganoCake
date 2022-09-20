@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class ="col-8">
-      <h3 class ="font-weight-bold">商品一覧<span>全(<%= @items.count %>)件</span></h3>
+      <h3 class ="font-weight-bold">商品一覧<small>(全<%= Item.count %>件)</small></h3>
         <div class ="mt-4 d-flex flex-wrap">
           <% @items.each do |item| %>
           <div class ="mr-1 mb-2">
