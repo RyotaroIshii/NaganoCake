@@ -39,6 +39,11 @@ Rails.application.routes.draw do
     get "genres/:id/edit" => "genres#edit", as: "genre_edit"
     patch "genres/:id" => "genres#update", as: "genre_update"
 
+    get "orders/:id" => "orders#show", as: "show_order"
+    patch "orders/:id" => "orders#update", as: "update_order"
+
+    patch "order_details/:id" => "order_details#update", as: "order_detail"
+
 
   end
 
