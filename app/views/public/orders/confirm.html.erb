@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <th class="table-light">請求金額</th>
-            <td><%= @order.shopping_cost + @total %></td>
+            <td><%= @order.total_payment %></td>
           </tr>
         </tbody>
       </table>
@@ -60,9 +60,9 @@
   <%= f.hidden_field :address, :value => @order.address %>
   <%= f.hidden_field :name, :value => @order.name %>
   <%= f.hidden_field :shopping_cost, :value => @order.shopping_cost %>
-  <%= f.hidden_field :total_payment, :value => @order.shopping_cost + @total %>
+  <%= f.hidden_field :total_payment, :value => @order.total_payment %>
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-  <%= f.hidden_field :status, :value => Order.statuses.key(0) %>
+  <%= f.hidden_field :status, :value => @order.status %>
   <div class="d-flex justify-content-center align-items-center">
     <%= f.submit '注文を確定する', :class => "btn btn-success btn-lg" %>
   </div>
