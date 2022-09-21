@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="row mb-2">
-    <div class="col-lg-8">
+    <div class="col--8">
       <table class="table shadow-sm">
         <thead>
           <tr class="font-weight-bold">
@@ -78,7 +78,7 @@
         </tr>
         <tr class="font-weight-bold">
           <th>請求金額合計</th>
-          <td><%= @order.total_payment %>円</td>
+          <td><%= @order.total_payment.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>
