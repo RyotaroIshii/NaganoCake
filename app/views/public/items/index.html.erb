@@ -17,8 +17,8 @@
           <% @items.each do |item| %>
           <div class ="mr-1 mb-2">
             <%= link_to show_item_path(item.id) do %>
-              <% if @item.image.attached? %>
-                <%= image_tag @item.get_image(150,100) %>
+              <% if item.image.attached? %>
+                <%= image_tag item.get_image(150,100) %>
               <% else %>
                 <%= image_tag 'no_image', size: "150x100" %>
               <% end %><br>
@@ -29,6 +29,5 @@
           <% end %>
         </div>
     </div>
-    <%= paginate @items %>
   </div>
 </div>
