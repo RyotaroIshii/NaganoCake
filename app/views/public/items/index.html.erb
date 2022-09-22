@@ -11,19 +11,19 @@
         <p>キャンディ</p>
       </div>
     </div>
-    <div class ="col-8">
+    <div class ="col-10">
       <h3 class ="font-weight-bold">商品一覧<small>(全<%= Item.count %>件)</small></h3>
         <div class ="mt-4 d-flex flex-wrap">
           <% @items.each do |item| %>
           <div class ="mr-1 mb-2">
             <%= link_to show_item_path(item.id) do %>
               <% if item.image.attached? %>
-                <%= image_tag item.get_image(150,100) %>
+                <%= image_tag item.get_image(180,130) %>
               <% else %>
-                <%= image_tag 'no_image', size: "150x100" %>
+                <%= image_tag 'no_image', size: "180x130" %>
               <% end %><br>
-              <p class ="text-dark mt-2"><%= item.name %></p>
-              <p class ="text-dark mt-2"><%= item.price %></p>
+              <p class ="text-dark mb-0 mt-1"><%= item.name %></p>
+              <p class ="font-weight-bold text-dark mt-0 mb-4">¥<%= item.price %></p>
             <% end %>
           </div>
           <% end %>
