@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  
   def index
     @cart_items = CartItem.all
   end
@@ -7,7 +8,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     if @cart_item = current_customer.cart_items.find_by(item_id: @item.id)
-      @cart_item.amount += params[:cart_item][:amount].to_i
+      @cart_item.amount += params[:cart_item][:amount]
       @cart_item.update(cart_item_params)
       redirect_to cart_path
     else
@@ -36,7 +37,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
   end
 
   def item_params
