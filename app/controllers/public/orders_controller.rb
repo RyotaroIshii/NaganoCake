@@ -10,16 +10,19 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
 
+    @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
+      @order_detail.name = @order.name
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price = @order.total_payment
+      @order_detail.price = @order.total_payment.to_s(:delimited)
       @order_detail.save
     end
 
-
+    @cart_items.destroy_all
+    redirect_to thanks_order_path
   end
 
   def confirm
@@ -60,7 +63,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :post_code, :address, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:customer_id, :name, :post_code, :address, :shopping_cost, :total_payment, :payment_method, :status)
   end
 
   def cart_item_params
