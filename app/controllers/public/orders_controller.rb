@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @address = Address.where(customer_id: current_customer.id)
   end
 
   def create
@@ -60,6 +61,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:name, :post_code, :address, :shipping_cost, :total_payment, :payment_method, :status)
+  end
+
+  def cart_item_params
+    params.require(:cart_item).permit(:item_id, :amount)
   end
 
 end
