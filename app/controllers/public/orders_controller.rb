@@ -13,7 +13,6 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
-      @order_detail.name = @order.name
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
@@ -29,7 +28,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = CartItem.all
     @order.shopping_cost = 800
-    @order.total_payment = @total.to_i + @order.shopping_cost
+    @total = 0
     @address = Address.find(params[:order][:address_id])
 
     if params[:order][:select_address] == "0"
@@ -53,7 +52,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.order("created_at DESC")
+    @orders = Order.where(customer_id: current_customer.id).order('created_at DESC')
   end
 
   def show

@@ -19,7 +19,7 @@
           <th class="col-2"></th>
         </tr>
         <% @cart_items.each do |cart_item| %>
-        <% @total = 0 %>
+
         <tr align="center" valign="middle">
           <td class="p-0 pt-2 pl-2 text-left"><p class="mb-1"><%= image_tag cart_item.item.get_image(70,60) %>　<%= cart_item.item.name %></p></td>
           <td class="p-0 pt-3 pl-2 text-left"><%= cart_item.item.with_tax_price %></td>

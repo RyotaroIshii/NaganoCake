@@ -16,7 +16,6 @@
             <th>小計</th>
           </tr>
           <% @cart_items.each do |cart_item| %>
-          <% @total = 0 %>
           <tr>
             <th><p><%= image_tag cart_item.item.get_image(50,40) %> <%= cart_item.item.name %></p></th>
             <td><%= cart_item.item.with_tax_price %></td>
@@ -41,7 +40,7 @@
           </tr>
           <tr>
             <th class="bg-light">請求金額</th>
-            <td><%= @order.total_payment.to_s(:delimited) %></td>
+            <td><%= @total.to_i + @order.shopping_cost %></td>
           </tr>
         </tbody>
       </table>
@@ -69,7 +68,10 @@
   <%= f.hidden_field :address, :value => @order.address %>
   <%= f.hidden_field :name, :value => @order.name %>
   <%= f.hidden_field :shopping_cost, :value => @order.shopping_cost %>
+
+  <% @order.total_payment = @total.to_i + @order.shopping_cost %>
   <%= f.hidden_field :total_payment, :value => @order.total_payment %>
+
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>
   <%= f.hidden_field :status, :value => @order.status %>
   <div class="d-flex justify-content-center align-items-center">

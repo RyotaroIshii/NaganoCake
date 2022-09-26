@@ -2,14 +2,19 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.all
+    @total = 0
   end
 
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    if @cart_item.item.id == current_customer.cart_items.find_by(item_id: @cart_item.item_id)
-      @cart_item.amount += params[:cart_item][:amount].to_i
-      @cart_item.update(cart_item_params)
+    @total_amount = 0
+    @item = Item.find(params[:cart_item][:item_id])
+
+    if current_customer.cart_items.exists?(item_id: @item.id)
+      @cart_item = current_customer.cart_items.find_by(item_id: @item.id)
+      @total_amount = @cart_item.amount + params[:cart_item][:amount].to_i
+      @cart_item.update(amount: @total_amount)
       redirect_to cart_path
     else
       @cart_item.save
