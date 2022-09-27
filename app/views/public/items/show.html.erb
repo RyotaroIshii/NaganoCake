@@ -15,16 +15,16 @@
     <% if @item.image.attached? %>
       <%= image_tag @item.get_image(300,200) %>
     <% else %>
-      <%= image_tag 'no_image', size: "300x200" %>
+      <%= image_tag "no_image", :size => "300x200" %>
     <% end %>
     </div>
-    <div class="col-3 ml-3">
+    <div class="col-4 ml-3">
       <h4 class ="font-weight-bold"><%= @item.name %></h4>
       <p class ="font-weight-bold"><%= @item.introduction %></p>
-      <h5 class ="font-weight-bold mt-4">¥ <%= @item.with_tax_price %><small>(税込)</small></h5>
+      <h5 class ="mt-4"><strong>¥ <%= @item.with_tax_price.to_s(:delimited) %></strong><font size="1">(税込)</font></h5>
       <p>
         <%= form_with model: @cart_item, url: create_cart_item_path, method: :post do |f| %>
-        <%= f.select :amount, *[1..999] %>
+        <%= f.select :amount, *[1..999], :prompt => "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit 'カートに入れる', :class =>"btn btn-success mt-1 ml-5" %>
         <% end %>

@@ -15,7 +15,7 @@
       <h3 class ="font-weight-bold">商品一覧<small>(全<%= Item.count %>件)</small></h3>
         <div class ="mt-4 d-flex flex-wrap">
           <% @items.each do |item| %>
-          <div class ="mr-1 mb-2">
+          <div class ="mr-2 mb-4">
             <%= link_to show_item_path(item.id) do %>
               <% if item.image.attached? %>
                 <%= image_tag item.get_image(180,130) %>
@@ -23,7 +23,7 @@
                 <%= image_tag 'no_image', size: "180x130" %>
               <% end %><br>
               <p class ="text-dark mb-0 mt-1"><%= item.name %></p>
-              <p class ="font-weight-bold text-dark mt-0 mb-4">¥<%= item.price %></p>
+              <p class ="font-weight-bold text-dark mt-0">¥<%= item.price.to_s(:delimited) %></p>
             <% end %>
           </div>
           <% end %>

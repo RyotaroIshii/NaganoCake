@@ -11,27 +11,30 @@
     <div class="offset-1"></div>
     <div class="col-10">
       <table class="table table-bordered">
-        <tr class="bg-light">
-          <th class="col-3">商品名</th>
-          <th class="col-2">単価（税込）</th>
-          <th class="col-2">数量</th>
-          <th class="col-2">小計</th>
-          <th class="col-2"></th>
-        </tr>
+        <thead>
+          <tr class="bg-light">
+            <th class="col-3">商品名</th>
+            <th class="col-2">単価（税込）</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+            <th class="col-2"></th>
+          </tr>
+        </thead>
         <% @cart_items.each do |cart_item| %>
-
-        <tr align="center" valign="middle">
-          <td class="p-0 pt-2 pl-2 text-left"><p class="mb-1"><%= image_tag cart_item.item.get_image(70,60) %>　<%= cart_item.item.name %></p></td>
-          <td class="p-0 pt-3 pl-2 text-left"><%= cart_item.item.with_tax_price %></td>
-          <td class="p-0 pt-2"><%= form_with model: cart_item, url: update_cart_item_path(cart_item.id) do |f| %>
+        <tbody>
+          <tr align="center" valign="middle">
+            <td class="p-0 pt-2 pl-2 text-left"><p class="mb-1"><%= image_tag cart_item.item.get_image(70,60) %>　<%= cart_item.item.name %></p></td>
+            <td class="p-0 pt-3 pl-2 text-left"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td class="p-0 pt-2"><%= form_with model: cart_item, url: update_cart_item_path(cart_item.id) do |f| %>
               <%= f.select :amount, *[1..999] %><%= f.submit '変更', :class => "btn btn-success btn-md ml-2 mb-2 px-1" %>
               <% end %>
-          </td>
-          <td class="p-0 pt-3 pl-2 text-left"><%= cart_item.subtotal %></td>
-          <td class="p-0 pt-2"><%= link_to '削除する', destroy_cart_item_path(cart_item.id) , method: :delete, :class => "btn btn-sm btn-danger mt-1 px-3" %></td>
+            </td>
+            <td class="p-0 pt-3 pl-2 text-left"><%= cart_item.subtotal.to_s(:delimited) %></td>
+            <td class="p-0 pt-2"><%= link_to '削除する', destroy_cart_item_path(cart_item.id) , method: :delete, :class => "btn btn-sm btn-danger mt-1 px-3" %></td>
           <% @total += cart_item.item.with_tax_price * cart_item.amount %>
-        </tr>
+          </tr>
         <% end %>
+        </tbody>
       </table>
     </div>
     <div class="offset-1"></div>
@@ -46,7 +49,7 @@
       <table class ="table table-bordered border-3 mb-0">
         <tr>
           <th class="table-light">合計金額</th>
-          <td><%= @total %></td>
+          <td><%= @total.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

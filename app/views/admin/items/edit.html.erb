@@ -12,26 +12,25 @@
     <tbody>
       <tr>
         <td><%= f.label :商品画像 %></td>
-        <td><%= f.label :image, :class => "btn btn-outline-dark" do %>
-              ファイルを選択
-              <%= f.file_field :image, :style => "display:none; " %>
+        <td><%= f.label :image, :class => "btn pl-0" do %>
+              <%= f.file_field :image %>
             <% end %></td>
       </tr>
       <tr>
-        <td><%= f.label :商品名 %></td>
-        <td><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", :size => "40" %></td>
+        <td class="pb-1"><%= f.label :商品名 %></td>
+        <td class="pb-1"><%= f.text_field :name, autocomplete: "name", placeholder: "商品名", :size => "40" %></td>
       </tr>
       <tr>
-        <td class="align-top"><%= f.label :商品説明 %></td>
-        <td><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", :size => "39*40" %></td>
+        <td class="align-top py-1"><%= f.label :商品説明 %></td>
+        <td class="py-1"><%= f.text_area :introduction, autocomplete: "introduction", placeholder: "ここに説明文を記述します", :size => "39*40" %></td>
       </tr>
       <tr>
         <td><%= f.label :ジャンル %></td>
-        <td><% f.collection_select :genre_id, @genres, :id, :name, placeholder: "選択してください" %></td>
+        <td><%= f.collection_select :genre_id, @genres, :id, :name, include_blank: "選択してください", :size => "40" %></td>
       </tr>
       <tr>
         <td><%= f.label :税抜価格 %></td>
-        <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000" %>円</td>
+        <td><%= f.text_field :price, autocomplete: "price", placeholder: "1000", :size => "40" %>円</td>
       </tr>
       <tr>
         <td><%= f.label :販売ステータス %></td>

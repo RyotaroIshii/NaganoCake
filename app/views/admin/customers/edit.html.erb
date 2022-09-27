@@ -11,45 +11,45 @@
       <%= form_with model: @customer, url: admin_update_customer_path(@customer) do |f| %>
       <table class ="table table-borderless">
         <tr>
-          <td>会員ID</td>
-          <td><%= @customer.id %></td>
+          <td class="pb-1">会員ID</td>
+          <td class="pb-1"><%= @customer.id %></td>
         </tr>
          <tr>
-          <td>氏名</td>
-          <td><%= f.text_field :last_name, :size => "20", :class => "mr-5" %><%= f.text_field :first_name, :size => "20" %></td>
+          <td class="py-1">氏名</td>
+          <td class="py-1"><%= f.text_field :last_name, :size => "20", :class => "mr-5" %><%= f.text_field :first_name, :size => "20" %></td>
         </tr>
         <tr>
-          <td>フリガナ</td>
-          <td><%= f.text_field :last_name_kana, :size => "20", :class => "mr-5" %><%= f.text_field :first_name_kana, :size => "20" %></td>
+          <td class="py-1">フリガナ</td>
+          <td class="py-1"><%= f.text_field :last_name_kana, :size => "20", :class => "mr-5" %><%= f.text_field :first_name_kana, :size => "20" %></td>
         </tr>
         <tr>
-          <td>郵便番号</td>
-          <td><%= f.text_field :post_code, :size => "20" %></td>
+          <td class="py-1">郵便番号</td>
+          <td class="py-1"><%= f.text_field :post_code, :size => "20" %></td>
         </tr>
         <tr>
-          <td>住所</td>
-          <td><%= f.text_field :address, :size => "50" %></td>
+          <td class="py-1">住所</td>
+          <td class="py-1"><%= f.text_field :address, :size => "50" %></td>
         </tr>
         <tr>
-          <td>電話番号</td>
-          <td><%= f.text_field :telephone_number, :size => "20" %></td>
+          <td class="py-1">電話番号</td>
+          <td class="py-1"><%= f.text_field :telephone_number, :size => "20" %></td>
         </tr>
         <tr>
-          <td>メールアドレス</td>
-          <td><%= f.text_field :email, :size => "20" %></td>
+          <td class="py-1">メールアドレス</td>
+          <td class="py-1"><%= f.text_field :email, :size => "20" %></td>
         </tr>
         <tr>
-          <td>会員ステータス</td>
-          <td>
+          <td class="pt-2">会員ステータス</td>
+          <td class="pt-2 pb-4">
           <%= f.radio_button :is_active, :false %>
-            <%= f.label :is_active, "有効", value: false, :class => "pr-3 border-bottom" %>
+            <%= f.label :is_active, "有効", value: false, :class => "mr-3 border-bottom" %>
           <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active, "退会", value: true, :class => "border-bottom" %>
           </td>
         </tr>
         <tr>
           <td></td>
-          <td><%= f.submit '変更を保存', :class => "btn btn-success btn-lg" %></td>
+          <td class="pt-4"><%= f.submit '変更を保存', :class => "btn btn-success btn-lg" %></td>
         </tr>
       </table>
       <% end %>

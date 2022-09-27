@@ -5,7 +5,7 @@
       <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">商品一覧</h5>
     </div>
     <div class="col-2">
-      <%= button_to admin_new_item_path, method: :get, :class => "btn btn-outline-secondary rounded-circle mt-3" do %>
+      <%= button_to admin_new_item_path, method: :get, :class => "btn btn-outline-secondary rounded-circle mt-4" do %>
         <i class="fa-solid fa-plus"></i>
       <% end %>
     </div>
@@ -14,33 +14,31 @@
     <div class="offset-1"></div>
     <div class="col-10">
       <table class="table">
-      <thead style="font-size:14px; background-color:#dcdcdc;">
-        <tr>
-          <th>商品ID</th>
-        　<th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tbody>
+        <thead class="bg-light" style="font-size:14px;">
+          <tr>
+            <th class="col-1 px-0">商品ID</th>
+          　<th class="col-4 px-1">商品名</th>
+            <th class="col-1 pl-0 pr-2">税抜価格</th>
+            <th class="col-4 px-2">ジャンル</th>
+            <th class="col-2 px-0">ステータス</th>
+          </tr>
+        </thead>
+        <tbody class="table-borderless border-bottom">
           <% @items.each do |item| %>
-            <tr>
-              <td><%= item.id %></td>
-              <td><%= link_to item.name, admin_show_item_path(item) %></td>
-              <td><%= item.with_tax_price %></td>
-              <td><%= item.genre.name %></td>
-              <% if item.is_active == true %>
-                <td class="text-success">販売中</td>
-              <% else %>
-                <td class="text-secondary">販売停止中</td>
-              <% end %>
-            </tr>
+          <tr>
+            <td class="col-1 px-0"><%= item.id %></td>
+            <td class="col-4 px-1"><u><%= link_to item.name, admin_show_item_path(item), :class => "text-dark" %></u></td>
+            <td class="col-1 pl-0 pr-2"><%= item.price.to_s(:delimited) %></td>
+            <td class="col-4 px-2"><%= item.genre.name %></td>
+            <% if item.is_active == true %>
+            <td class="col-2 px-0 text-success">販売中</td>
+            <% else %>
+            <td class="col-2 px-0 text-secondary">販売停止中</td>
+            <% end %>
+           </tr>
           <% end %>
         </tbody>
-      </tbody>
-    </table>
+      </table>
     </div>
     <div class="offset-1"></div>
   </div>

@@ -5,8 +5,8 @@
       <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">注文履歴詳細</h5>
     </div>
   </div>
-  <div class="row mb-2">
-    <div class="col-lg-6">
+  <div class="row ml-5">
+    <div class="col-6">
       <table class="table table-borderless">
         <tr>
           <th class="font-weight-bold pb-1">購入者</th>
@@ -37,7 +37,7 @@
       </table>
     </div>
   </div>
-  <div class="row mb-2">
+  <div class="row ml-5">
     <div class="col-8">
       <table class="table shadow-sm">
         <thead>
@@ -54,10 +54,10 @@
           <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
               <% @total += order_detail.item.with_tax_price * order_detail.amount %>
-              <td><%= @total %></td>
+              <td><%= @total.to_s(:delimited) %></td>
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
                 <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
                 <td><%= f.submit "更新", :class => "btn btn-success" %></td>
@@ -67,11 +67,11 @@
         </tbody>
       </table>
     </div>
-    <div class="col-lg-4 d-flex align-items-end mb-2">
+    <div class="col-4 d-flex align-items-end mb-2">
       <table>
         <tr>
           <th class="font-weight-bold">商品合計</th>
-          <td><%= @total %>円</td>
+          <td><%= @total.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <th class="font-weight-bold">送料</th>
