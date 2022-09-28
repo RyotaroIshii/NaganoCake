@@ -1,6 +1,13 @@
 class Item < ApplicationRecord
   has_one_attached :image
 
+  validates :image,         presence: true
+  validates :name,          presence: true
+  validates :introduction,  presence: true
+  validates :price,         presence: true
+  validates :genre_id,      presence: true
+  validates :is_active,     inclusion: {in: [true, false]}
+
   has_many :cart_items, dependent: :destroy
   has_many :order_details
   belongs_to :genre
