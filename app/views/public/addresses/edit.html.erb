@@ -1,28 +1,28 @@
 <div class ="container">
   <div class="row">
-    <div class="offset-2 col-10">
+    <div class="offset-1 col-10">
       <h5 class="d-inline-block my-4 mx-4 px-3" style="background-color:#dcdcdc;">配送先編集</h5>
     </div>
   </div>
   <div class ="row">
-    <div class="col-lg-10 col-md-12">
+    <div class="col-12">
       <table class ="table table-borderless">
         <%= form_with model: @address, url: update_address_path(@address), method: :patch do |f| %>
         <tr>
-          <th>郵便番号（ハイフンなし）</th>
-          <td><%= f.text_field :post_code %></td>
+          <th class="p-0" style="font-size:14px;">郵便番号（ハイフンなし）</th>
+          <td class="p-0 pl-3"><%= f.text_field :post_code %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <th>住所</th>
-          <td><%= f.text_field :address %></td>
+          <th class="p-0 ml-3" style="font-size:14px;">住所</th>
+          <td class="p-1 pl-3"><%= f.text_field :address, :size => "50" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <th>宛名</th>
-          <td><%= f.text_field :name %></td>
+          <th class="p-0 ml-3" style="font-size:14px;">宛名</th>
+          <td class="p-1 pl-3"><%= f.text_field :name %></td>
           <td></td>
           <td><%= f.submit '変更内容を保存', :class => "btn btn-success" %></td>
         </tr>

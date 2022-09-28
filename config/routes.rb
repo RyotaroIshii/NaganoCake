@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     get "customers/edit" => "customers#edit"
+    patch "customers" => "customers#update", as: "update"
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -57,7 +58,7 @@ Rails.application.routes.draw do
     get "customers" => "customers#show", as: "customers"
     get "customers/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
     patch "customers/withdraw" => "customers#withdraw", as: "withdraw"
-    patch "customers" => "customers#update", as: "update"
+
 
 
 

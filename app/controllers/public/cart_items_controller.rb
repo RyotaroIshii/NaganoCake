@@ -26,17 +26,20 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_to cart_path
+    flash[:notice] = '数量の変更に成功しました'
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_path
+    flash[:notice] = '正常に削除されました'
   end
 
   def destroy_all
     current_customer.cart_items.destroy_all
     redirect_to cart_path
+    flash[:notice] = 'カートの中身を空にしました。'
   end
 
   private
