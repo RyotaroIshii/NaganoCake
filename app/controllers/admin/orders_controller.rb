@@ -11,6 +11,9 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order.update(order_params)
+    if @order.status == "confirmation"
+      @order_details.update_all(making_status: "waiting")
+    end
     redirect_to admin_show_order_path
   end
 
