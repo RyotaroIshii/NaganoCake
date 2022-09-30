@@ -12,9 +12,8 @@
     <tbody>
       <tr>
         <td><%= f.label :商品画像 %></td>
-        <td><%= f.label :image, :class => "btn btn-outline-dark" do %>
-              ファイルを選択
-              <%= f.file_field :image, :style => "display:none;" %>
+        <td><%= f.label :image, :class => "btn pl-0" do %>
+              <%= f.file_field :image %>
             <% end %>
         </td>
       </tr>
