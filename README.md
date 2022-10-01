@@ -1,24 +1,138 @@
-# README
+# NaganoCake
+## 概要
+[NaganoCake](https://github.com/RyotaroIshii/NaganoCake)は、`長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト`です。
+プログラミングの学習で作成しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**これは架空の店舗**です。
 
-Things you may want to cover:
+# 動作確認動画(一部)
 
-* Ruby version
+[こちら](https://drive.google.com/file/d/1rhlhGUdI6GZOoLXLpna7FUcwOWH2fWVZ/view?usp=sharing)
 
-* System dependencies
+# Point
 
-* Configuration
+作成する上で提示された必須機能に加え、テスト仕様書に記載された**任意実装のチャレンジ機能も全て実装**しました。
 
-* Database creation
+# 使用・導入したもの
+## 環境
 
-* Database initialization
+ - Cloud9 for AWS
+ - Rails 6.1.6.1
+ - ruby 3.1.2
 
-* How to run the test suite
+## 導入
 
-* Services (job queues, cache servers, search engines, etc.)
+* devise 4.8.1
+* bootstrap 4.5
+* kaminari 1.2.1
+* font-awesome 6.1.2
+* net-smtp
+* enum_help
+* ActiveStorage
 
-* Deployment instructions
+# 導入物のインストール方法
+## gem file → bundle install
 
-* ...
+ - devise
+ - kaminari
+ - net-smtp
+ - enum_help
+
+ ## ターミナルでインストール
+
+ - $ yarn add jquery bootstrap@4.5 popper.js
+ - $ yarn add @fortawesome/fontawesome-free@6.1.2
+ - $ rails active_storage:install
+
+# 実装した機能
+## 顧客側
+
+ 1.ログイン
+> `メールアドレス、パスワードでログインできる。
+
+2.ログアウト
+>  ログインしている状態からログアウト状態にする。
+
+3.商品一覧表示
+> 商品を一覧表示する。
+
+4.商品詳細情報表示
+> 商品一覧画面で選択した商品の詳細情報を表示する。
+> カート追加機能が表示されている。
+
+5.カート追加
+> カートに商品を追加することができる。
+
+6.カート一覧
+> カートの中身を一覧表示することができる。
+
+7.カート編集
+> カートの中身の個数を編集したり、削除したりすることができる。
+
+8.注文
+> カートの中身の購入をすることができる。
+> 支払方法や発送先を設定することができる。
+
+9.会員情報編集
+> 登録している情報を編集することができる。
+
+10.退会
+> 退会手続きをすることができる。
+
+11.配送先追加・編集
+> 登録している配送先を一覧で確認することができる。 ・配送先の新規追加・修正・削除をすることができる。
+
+12.注文履歴一覧表示
+> 過去の注文概要を一覧で確認することができる。
+
+13.注文履歴詳細表示
+> 注文の詳細(注文商品や個数など)を確認することができる。
+
+## 管理者側
+
+1.ログイン
+> メールアドレス、パスワードでログインできる。
+
+2.ログアウト
+> ログインしている状態からログアウト状態にする。
+
+3.注文履歴一覧表示
+> 過去の注文概要を一覧で確認することができる。
+
+4.注文履歴詳細表示
+> 注文の詳細(注文商品や個数など)を確認することができる。
+>  注文ステータス、製作ステータスを変更することができる。
+
+5.顧客一覧表示
+> 顧客情報を一覧で確認することができる。
+
+6.顧客詳細情報表示
+> 顧客の詳細情報を確認することができる。
+顧客のステータス(有効/退会)を切り替えることができる。
+
+7.商品一覧表示
+> 登録商品を一覧で確認することができる。
+
+8.商品詳細情報表示
+> 商品の詳細情報を確認することができる。
+
+9.商品情報変更
+> 商品の登録情報を変更することができる。
+> 販売ステータスを変更することができる。
+
+10.ジャンル設定
+> ジャンルの追加・変更を行うことができる。
+
+# 製作者
+
+ *  名前
+> 石井凌太朗
+
+ * プログラミング歴
+> 3ヶ月(2022/10/01時点)
+
+ * 所属
+> [DMM WEBCAMP](https://web-camp.io/commit/lp/?utm_source=cpc-google&utm_medium=commit-unspecified-brand&utm_term=dmm%20web_e&gclid=Cj0KCQjwyt-ZBhCNARIsAKH1176CHdLXzjiN7QkJh_GRXwWRDuB_Zlcc4Eb6aCf_WIV-gnfoD8jJnyMaAtQzEALw_wcB#)
+
+ *  E-mail
+> taro.ne.jp.252514☆(☆→＠)gmail.com
