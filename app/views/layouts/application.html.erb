@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <header style="background-color:#deb887;">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <div class="row">
             <a class="navbar-brand text-white mr-5" href="/"><%= image_tag 'logo.png', size: "40x40" %> Nagano Cake</a>
@@ -21,62 +21,80 @@
             </button>
           </div>
           <div class="row">
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3 ml-5">
+                <li class="nav-item btn btn-outline-secondary mr-3 ml-5">
                   <%= link_to "商品一覧", admin_items_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "会員一覧", admin_index_customers_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "注文履歴一覧", admin_root_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "ジャンル一覧", admin_genres_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, :class => "nav-link text-white p-0" %>
                 </li>
               </ul>
+              <ul class="navbar-nav ml-auto pt-1">
+              <%=form_with url: index_item_path do |f| %>
+               <%= f.text_field :item_search, placeholder: "Search" %>
+               <%= f.submit 'Search', :class =>"fa-solid fa-magnifying-glass-arrow-right" %>
+              <% end %>
+              </ul>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
               <ul class="navbar-nav ml-5">
                 <% elsif customer_signed_in? %>
                 <li class="nav-item text-white mt-2 mx-5">
                   <p>ようこそ、<%= current_customer.last_name %>さん！</p>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3 ml-5">
+                <li class="nav-item btn btn-outline-secondary mr-3 ml-5">
                   <%= link_to "マイページ", customers_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "商品一覧", index_item_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "カート", cart_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, :class => "nav-link text-white p-0" %>
                 </li>
               </ul>
+              <ul class="navbar-nav ml-auto pt-1">
+              <%=form_with url: index_item_path do |f| %>
+               <%= f.text_field :item_search, placeholder: "Search" %>
+               <%= f.submit 'Search', :class =>"fa-solid fa-magnifying-glass-arrow-right" %>
+              <% end %>
+              </ul>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% else %>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "About", about_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "商品一覧", index_item_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "新規登録", new_customer_registration_path, :class => "nav-link text-white p-0" %>
                 </li>
-                <li class="nav-item btn btn-outline-secondary h-50 mr-3">
+                <li class="nav-item btn btn-outline-secondary mr-3">
                   <%= link_to "ログイン", new_customer_session_path, :class => "nav-link text-white p-0" %>
                 </li>
                 <% end %>
+              </ul>
+              <ul class="navbar-nav ml-auto pt-1">
+              <%=form_with url: index_item_path do |f| %>
+               <%= f.text_field :item_search, placeholder: "Search" %>
+               <%= f.submit 'Search', :class =>"fa-solid fa-magnifying-glass-arrow-right" %>
+              <% end %>
               </ul>
             </div>
           </div>
